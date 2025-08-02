@@ -1,1 +1,57 @@
-<!DOCTYPE html><html><body><h2>المرحلة 3 - تحت التطوير</h2></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>المرحلة 3 - وضع الحجر</title>
+  <style>
+    body {
+      font-family: Cairo, sans-serif;
+      background: linear-gradient(#fff3e0, #ffe0b2);
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #ef6c00;
+    }
+    .area {
+      position: relative;
+      height: 300px;
+      background: url("pyramid-site.jpg") center/cover no-repeat;
+    }
+    #stone {
+      position: absolute;
+      bottom: 10px;
+      left: 50px;
+      width: 100px;
+      cursor: grab;
+    }
+    #target {
+      position: absolute;
+      bottom: 10px;
+      right: 50px;
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏗️ ضع الحجر في مكانه</h1>
+  <div class="area">
+    <img src="stone.png" id="stone" draggable="true">
+    <img src="pyramid-site.jpg" id="target">
+  </div>
+
+  <script>
+    const stone = document.getElementById('stone');
+    const target = document.getElementById('target');
+
+    stone.addEventListener('dragend', () => {
+      const stoneRect = stone.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const dx = Math.abs(stoneRect.left - targetRect.left);
+      if (dx < 80) {
+        alert("🎉 تم وضع الحجر بنجاح!");
+      }
+    });
+  </script>
+</body>
+</html>
