@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة بناء الأهرامات - جميع المراحل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: url('pyramid.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+    header {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .game-area {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+    }
+    .cart {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      width: 220px;
+      transition: left 0.3s ease;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .controls button {
+      padding: 0.8rem 1.4rem;
+      font-size: 1.1rem;
+      background-color: #8e24aa;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background-color: #ab47bc;
+    }
+    .stage-buttons {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .stage-buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #3949ab;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .stage-buttons a:hover {
+      background-color: #5c6bc0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>لعبة بناء الأهرامات - المرحلة 2: نقل الأحجار بالعربة</h1>
+  </header>
+
+  <div class="game-area">
+    <img src="cart.jpg" alt="عربة نقل الأحجار" class="cart" id="cart">
+  </div>
+
+  <div class="controls">
+    <button onclick="moveCart(-20)">⬅️ تحرك يسار</button>
+    <button onclick="moveCart(20)">➡️ تحرك يمين</button>
+  </div>
+
+  <div class="stage-buttons">
+    <a href="index.html">العودة إلى البداية</a>
+    <a href="level-1.html">المرحلة 1</a>
+    <a href="level-2.html">المرحلة 2</a>
+    <a href="level-3.html">المرحلة 3</a>
+  </div>
+
+  <script>
+    const cart = document.getElementById('cart');
+    let cartPos = 30;
+
+    function moveCart(step) {
+      cartPos = Math.max(0, Math.min(window.innerWidth - 220, cartPos + step));
+      cart.style.left = cartPos + 'px';
+    }
+  </script>
+</body>
+</html>
